@@ -22,6 +22,9 @@ var port = process.env.PORT || 3000
 // Initialize Express
 var app = express();
 
+// Initialize Server
+let server = require('http').Server(app);
+
 // Use morgan and body parser with our app
 app.use(logger("dev"));
 app.use(bodyParser.urlencoded({
@@ -244,6 +247,6 @@ app.delete("/notes/delete/:note_id/:article_id", function(req, res) {
 });
 
 // Listen on port
-app.listen(port, function() {
+server.listen(port, function() {
     console.log("App running on port " + port);
 });
