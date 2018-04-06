@@ -5,6 +5,7 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
@@ -12,7 +13,7 @@
   },
   "author": "Adam Troy",
   "license": "ISC",
-   "bugs": {
+  "bugs": {
     "url": "https://github.com/adamtroy/nyt-mongo-scraper/issues"
   },
   "homepage": "https://github.com/adamtroy/nyt-mongo-scraper#readme",
