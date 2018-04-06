@@ -13,14 +13,8 @@ var Article = require("./models/Article.js");
 var request = require("request");
 var cheerio = require("cheerio");
 
-var MONGODB_URI = process.env.MONGODB_URI || "mongodb://heroku_l859slz6:ke887stt1rpf2v0itbi1nf70db@ds237409.mlab.com:37409/heroku_l859slz6";
-
 // Set mongoose to leverage built in JavaScript ES6 Promises
-// Connect to the Mongo DBs
 mongoose.Promise = Promise;
-mongoose.connect(MONGODB_URI, {
-  useMongoClient: true
-});
 
 //Define port
 var port = process.env.PORT || 3000
