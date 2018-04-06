@@ -5,10 +5,17 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adamtroy/nyt-mongo-scraper.git"
   },
   "author": "Adam Troy",
   "license": "ISC",
+   "bugs": {
+    "url": "https://github.com/adamtroy/nyt-mongo-scraper/issues"
+  },
+  "homepage": "https://github.com/adamtroy/nyt-mongo-scraper#readme",
   "dependencies": {
     "body-parser": "^1.18.2",
     "cheerio": "^1.0.0-rc.2",
