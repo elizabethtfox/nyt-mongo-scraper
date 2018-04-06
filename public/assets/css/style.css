@@ -1,8 +1,17 @@
 body {
     background-image: url("/assets/images/background.jpg");
     padding-top: 70px;
+    font-family: "Times New Roman", Times, serif;
 }
-
+.jumbotron{
+    position: relative;
+    padding:0 !important;
+    margin-top:70px !important;
+    background: rgb(221, 218, 240);
+    margin-top: 23px;
+    text-align:center;
+    margin-bottom: 100px !important;
+}
 .deleteNote {
 	display: inline-block;
 }
