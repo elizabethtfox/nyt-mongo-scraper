@@ -5,13 +5,23 @@ var logger = require("morgan");
 var mongoose = require("mongoose");
 var path = require("path");
 
+// Scraping tools
+var request = require("request");
+var cheerio = require("cheerio");
+
 // Requiring Note and Article models
 var Note = require("./models/Note.js");
 var Article = require("./models/Article.js");
 
-// Scraping tools
-var request = require("request");
-var cheerio = require("cheerio");
+// Mongoose set up
+var databaseUrl = 'mongodb://heroku_l859slz6:ke887stt1rpf2v0itbi1nf70db@ds237409.mlab.com:37409/heroku_l859slz6';
+
+if (process.env.MONGODB_URI) {
+	mongoose.connect(process.env.MONGODB_URI);
+}
+else {
+	mongoose.connect(databaseUrl);
+};
 
 // Set mongoose to leverage built in JavaScript ES6 Promises
 mongoose.Promise = Promise;
@@ -21,9 +31,6 @@ var port = process.env.PORT || 3000
 
 // Initialize Express
 var app = express();
-
-// Initialize Server
-let server = require('http').Server(app);
 
 // Use morgan and body parser with our app
 app.use(logger("dev"));
@@ -247,6 +254,6 @@ app.delete("/notes/delete/:note_id/:article_id", function(req, res) {
 });
 
 // Listen on port
-server.listen(port, function() {
+app.listen(port, function() {
     console.log("App running on port " + port);
 });
