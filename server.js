@@ -34,11 +34,11 @@ app.use(express.static("public"));
 // Set Handlebars.
 var exphbs = require("express-handlebars");
 
-app.engine("handlebars", exphbs({
+app.engine("express-handlebars", exphbs({
     defaultLayout: "main",
     partialsDir: path.join(__dirname, "/views/layouts/partials")
 }));
-app.set("view engine", "handlebars");
+app.set("view engine", "express-handlebars");
 
 // Database configuration with mongoose
 mongoose.connect("mongodb://heroku_jnqfcg5f:47kf7fodl9b55eg3n7vmh7a9fs@ds237379.mlab.com:37379/heroku_jnqfcg5f");
