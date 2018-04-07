@@ -16,11 +16,11 @@ var Article = require("./models/Article.js");
 // Set mongoose to leverage built in JavaScript ES6 Promises
 mongoose.Promise = Promise;
 
-// Define port
-var port = process.env.PORT || 3000
-
 // Initialize Express
 var app = express();
+
+// Define port
+var port = process.env.PORT || 3000;
 
 // Use morgan and body parser with our app
 app.use(logger("dev"));
@@ -42,7 +42,7 @@ app.set("view engine", "handlebars");
 
 // Database configuration with mongoose
 mongoose.connect("mongodb://heroku_jnqfcg5f:47kf7fodl9b55eg3n7vmh7a9fs@ds237379.mlab.com:37379/heroku_jnqfcg5f");
-//mongoose.connect("mongodb://localhost:27017/mongoscraper");
+// mongoose.connect("mongodb://localhost:27017/mongoscraper");
 var db = mongoose.connection;
 
 // Show any mongoose errors
