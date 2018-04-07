@@ -13,14 +13,24 @@ var cheerio = require("cheerio");
 var Note = require("./models/Note.js");
 var Article = require("./models/Article.js");
 
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://heroku_jnqfcg5f:47kf7fodl9b55eg3n7vmh7a9fs@ds237379.mlab.com:37379/heroku_jnqfcg5f";
+
 // Set mongoose to leverage built in JavaScript ES6 Promises
+// Connect to the Mongo DB
 mongoose.Promise = Promise;
+mongoose.connect(MONGODB_URI, {
+  useMongoClient: true
+});
+
+////  mongoose.connect("mongodb://localhost:27017/mongoscraper"); ///
+
+var db = mongoose.connection;
+
+// Define port
+var port = process.env.PORT || 3000
 
 // Initialize Express
 var app = express();
-
-// Define port
-var port = process.env.PORT || 3000;
 
 // Use morgan and body parser with our app
 app.use(logger("dev"));
@@ -34,16 +44,11 @@ app.use(express.static("public"));
 // Set Handlebars.
 var exphbs = require("express-handlebars");
 
-app.engine("express-handlebars", exphbs({
+app.engine("handlebars", exphbs({
     defaultLayout: "main",
     partialsDir: path.join(__dirname, "/views/layouts/partials")
 }));
-app.set("view engine", "express-handlebars");
-
-// Database configuration with mongoose
-mongoose.connect("mongodb://heroku_jnqfcg5f:47kf7fodl9b55eg3n7vmh7a9fs@ds237379.mlab.com:37379/heroku_jnqfcg5f");
-// mongoose.connect("mongodb://localhost:27017/mongoscraper");
-var db = mongoose.connection;
+app.set("view engine", "handlebars");
 
 // Show any mongoose errors
 db.on("error", function(error) {
