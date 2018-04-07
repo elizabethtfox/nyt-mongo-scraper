@@ -19,9 +19,6 @@ mongoose.Promise = Promise;
 // Define port
 var port = process.env.PORT || 3000
 
-// Define mongodb uri
-var MONGODB_URI = process.env.MONGODB_URI || "mongodb://heroku_jnqfcg5f:47kf7fodl9b55eg3n7vmh7a9fs@ds237379.mlab.com:37379/heroku_jnqfcg5f";
-
 // Initialize Express
 var app = express();
 
@@ -44,7 +41,8 @@ app.engine("handlebars", exphbs({
 app.set("view engine", "handlebars");
 
 // Database configuration with mongoose
-mongoose.connect(MONGODB_URI);
+mongoose.connect("mongodb://heroku_jnqfcg5f:47kf7fodl9b55eg3n7vmh7a9fs@ds237379.mlab.com:37379/heroku_jnqfcg5f");
+//mongoose.connect("mongodb://localhost:27017/mongoscraper");
 var db = mongoose.connection;
 
 // Show any mongoose errors
