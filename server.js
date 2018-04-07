@@ -13,16 +13,6 @@ var cheerio = require("cheerio");
 var Note = require("./models/Note.js");
 var Article = require("./models/Article.js");
 
-// Mongoose set up
-var databaseUrl = 'mongodb://heroku_l859slz6:ke887stt1rpf2v0itbi1nf70db@ds237409.mlab.com:37409/heroku_l859slz6';
-
-if (process.env.MONGODB_URI) {
-	mongoose.connect(process.env.MONGODB_URI);
-}
-else {
-	mongoose.connect(databaseUrl);
-};
-
 // Set mongoose to leverage built in JavaScript ES6 Promises
 mongoose.Promise = Promise;
 
